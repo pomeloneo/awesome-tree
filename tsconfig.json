@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "declaration": true,
+    "allowJs": false,
+    "target": "ESNext",
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
+    "esModuleInterop": true
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ]
+}
