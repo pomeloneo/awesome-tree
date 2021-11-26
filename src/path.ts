@@ -6,19 +6,19 @@ import {
   Key
 } from './interface'
 
-export function getPath<R>(
+export function getPath<R, G, S>(
   key: Key | null | undefined,
   { includeSelf = true }: GetPathOptions,
-  awesomeTree: AwesomeTree<R>
-): AwsTreePath<R> {
+  awesomeTree: AwesomeTree<R, G, S>
+): AwsTreePath<R, G, S> {
   const awsTreeNodeMap = awesomeTree.awsTreeNodeMap
 
   let awsTreeNode = key == null ? null : awsTreeNodeMap.get(key)
 
-  const awsTreePath: AwsTreePath<R> = {
+  const awsTreePath: AwsTreePath<R, G, S> = {
     keyPath: [],
     awsTreeNodePath: [],
-    awsTreeNode: awsTreeNode as AwsTreeNode<R> | null
+    awsTreeNode: awsTreeNode as AwsTreeNode<R, G, S> | null
   }
 
   while (awsTreeNode) {

@@ -6,17 +6,22 @@ import {
   Key,
   RawNode
 } from './interface'
-import { warn } from './logger'
+
 import {
   defaultGetChildren,
   defaultGetKey,
-  defaultIsDisabled
-} from './internal'
+  defaultIsDisabled,
+  defaultIsGroup,
+  defaultIsLeaf,
+  defaultIsSpectre
+} from './internal-utils'
 
 import { getPath } from './path'
+import { nested } from './nested'
+import { flatten, flattenExpandedKeys } from './flatten'
 
-function generateTreeNodes<R = RawNode>(
-  rawNodes: Array<R>,
+function generateTreeNodes<R, G, S>(
+  rawNodes: Array<R | G | S>,
   awsTreeNodeMap,
   leveledAwsTreeNodeMap,
   awsTreeNodePrototype,
@@ -24,33 +29,36 @@ function generateTreeNodes<R = RawNode>(
   parent = null,
   level: number = 0
 ) {
-  const awsTreeNodes: Array<AwsTreeNode<R>> = []
+  const awsTreeNodes: Array<AwsTreeNode<R, G, S>> = []
   rawNodes.forEach((rawNode, index) => {
-    const awsTreeNode: AwsTreeNode<R> = Object.create(awsTreeNodePrototype)
+    const awsTreeNode: AwsTreeNode<R, G, S> =
+      Object.create(awsTreeNodePrototype)
     awsTreeNode.rawNode = rawNode
     awsTreeNode.parent = parent
     awsTreeNode.siblings = awsTreeNodes
     awsTreeNode.index = index
     awsTreeNode.level = level
+    awsTreeNode.isFirstNode = index === 0
+    awsTreeNode.isLastNode = awsTreeNodes.length - 1 === index
 
-    const rawChildren = getChildren(rawNode as R)
-
-    if (Array.isArray(rawChildren)) {
-      awsTreeNode.children = generateTreeNodes<R>(
-        rawChildren,
-        awsTreeNodeMap,
-        leveledAwsTreeNodeMap,
-        awsTreeNodePrototype,
-        getChildren,
-        awsTreeNode,
-        level + 1
-      )
-    } else {
-      warn(`the key is ${awsTreeNode.key}'s children must be array`)
+    // skip spectre node
+    if (!awsTreeNode.isSpectre) {
+      const rawChildren = getChildren(rawNode as R)
+      if (Array.isArray(rawChildren)) {
+        awsTreeNode.children = generateTreeNodes<R, G, S>(
+          rawChildren,
+          awsTreeNodeMap,
+          leveledAwsTreeNodeMap,
+          awsTreeNodePrototype,
+          getChildren,
+          awsTreeNode,
+          level + 1
+        )
+      }
     }
 
     awsTreeNodes.push(awsTreeNode)
-    awsTreeNodeMap.set((rawNode as any).key, awsTreeNode)
+    awsTreeNodeMap.set((awsTreeNode as any).key, awsTreeNode)
 
     if (!leveledAwsTreeNodeMap.has(level)) {
       leveledAwsTreeNodeMap.set(level, [])
@@ -61,14 +69,17 @@ function generateTreeNodes<R = RawNode>(
   return awsTreeNodes
 }
 
-export function createAwesomeTree<R = RawNode>(
+export function createAwesomeTree<R = RawNode, G = R, S = R>(
   rawNodes: Array<R>,
-  options: AwsTreeNodeOperators<R> = {}
+  options: AwsTreeNodeOperators<R, G, S> = {}
 ) {
   const {
-    getIsDisabled = defaultIsDisabled,
+    isDisabled = defaultIsDisabled,
     getKey = defaultGetKey,
-    getChildren = defaultGetChildren
+    getChildren = defaultGetChildren,
+    isGroup = defaultIsGroup,
+    isSpectre = defaultIsSpectre,
+    isLeaf = defaultIsLeaf
   } = options
 
   const awsTreeNodeMap = new Map()
@@ -79,11 +90,27 @@ export function createAwesomeTree<R = RawNode>(
       return getKey((this as any).rawNode)
     },
     get disabled(): boolean {
-      return getIsDisabled((this as any).rawNode)
+      return isDisabled((this as any).rawNode)
+    },
+    get isGroup(): boolean {
+      return isGroup((this as any).rawNode)
+    },
+    get isSpectre(): boolean {
+      return isSpectre((this as any).rawNode)
+    },
+    get isLeaf(): boolean {
+      return isLeaf((this as any).rawNode, getChildren)
+    },
+    nested<R, G, S>(
+      this: AwsTreeNode<R, G, S>,
+      node: AwsTreeNode<R, G, S>,
+      isDirect: boolean = false
+    ): boolean {
+      return nested(this, node, isDirect)
     }
   })
 
-  const awsTreeNodes: Array<AwsTreeNode<R>> = generateTreeNodes<R>(
+  const awsTreeNodes: Array<AwsTreeNode<R, G, S>> = generateTreeNodes<R, G, S>(
     rawNodes,
     awsTreeNodeMap,
     leveledAwsTreeNodeMap,
@@ -99,13 +126,23 @@ export function createAwesomeTree<R = RawNode>(
     return awsTreeNode
   }
 
-  const awesomeTree: AwesomeTree<R> = {
+  const awesomeTree: AwesomeTree<R, G, S> = {
     awsTreeNodes,
     awsTreeNodeMap,
     leveledAwsTreeNodeMap,
     getNode,
     getPath(key: Key | null | undefined, options: GetPathOptions = {}) {
-      return getPath<R>(key, options, awesomeTree)
+      return getPath<R, G, S>(key, options, awesomeTree)
+    },
+    nested,
+    flatten(
+      nodes: Array<AwsTreeNode<R, G, S>>,
+      skipGroup?: boolean
+    ): Array<AwsTreeNode<R, G, S>> {
+      return flatten(nodes, skipGroup)
+    },
+    flattenExpandedKeys(keys: Key[], skipGroup = true): Array<AwsTreeNode<R, G, S>> {
+      return flattenExpandedKeys<R, G, S>(keys, skipGroup, awsTreeNodes)
     }
   }
 

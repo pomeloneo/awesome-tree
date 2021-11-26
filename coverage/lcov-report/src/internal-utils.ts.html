@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/path.ts</title>
+    <title>Code coverage report for src/internal-utils.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> path.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> internal-utils.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.3% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/13</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
@@ -89,78 +89,69 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">175x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">135x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
-  AwesomeTree,
-  AwsTreeNode,
-  AwsTreePath,
-  GetPathOptions,
-  Key
-} from './interface'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { GetChildren, Key, RawNode } from './interface'
 &nbsp;
-export function getPath&lt;R, G, S&gt;(
-  key: Key | null | undefined,
-  { includeSelf = true }: GetPathOptions,
-  awesomeTree: AwesomeTree&lt;R, G, S&gt;
-): AwsTreePath&lt;R, G, S&gt; {
-  const awsTreeNodeMap = awesomeTree.awsTreeNodeMap
+export function defaultGetChildren&lt;R, G, S&gt;(node: R | G | S): Array&lt;R | G | S&gt; | unknown {
+  return (node as any).children
+}
 &nbsp;
-  let awsTreeNode = key == null ? <span class="branch-0 cbranch-no" title="branch not covered" >null </span>: awsTreeNodeMap.get(key)
+export function <span class="fstat-no" title="function not covered" >defaultIsDisabled(</span>rawNode: RawNode): boolean {
+<span class="cstat-no" title="statement not covered" >  return rawNode.disabled === true</span>
+}
 &nbsp;
-  const awsTreePath: AwsTreePath&lt;R, G, S&gt; = {
-    keyPath: [],
-    awsTreeNodePath: [],
-    awsTreeNode: awsTreeNode as AwsTreeNode&lt;R, G, S&gt; | null
+export function defaultGetKey(rawNode: RawNode): Key {
+  return rawNode.key
+}
+&nbsp;
+export function defaultIsGroup(rawNode: RawNode): boolean {
+  return rawNode.type === 'group'
+}
+&nbsp;
+export function defaultIsSpectre(rawNode: RawNode): boolean {
+  return rawNode.type === 'spectre'
+}
+&nbsp;
+export function defaultIsLeaf&lt;R = RawNode, G = R, S = R&gt;(
+  rawNode: R | G | S,
+  getChildren: GetChildren&lt;R, G, S&gt; = <span class="branch-0 cbranch-no" title="branch not covered" >defaultGetChildren</span>
+): boolean {
+  const { isLeaf } = rawNode as any
+  if (isLeaf !== undefined) {
+    return isLeaf
   }
-&nbsp;
-  while (awsTreeNode) {
-    awsTreePath.awsTreeNodePath.push(awsTreeNode)
-    awsTreeNode = awsTreeNode.parent
-  }
-  awsTreePath.awsTreeNodePath.reverse()
-&nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!includeSelf) <span class="cstat-no" title="statement not covered" >awsTreePath.awsTreeNodePath.pop()</span>
-&nbsp;
-  awsTreePath.keyPath = awsTreePath.awsTreeNodePath.map((n) =&gt; n.key)
-&nbsp;
-  return awsTreePath
+  return !getChildren(rawNode)
 }
 &nbsp;</pre></td></tr></table></pre>
 

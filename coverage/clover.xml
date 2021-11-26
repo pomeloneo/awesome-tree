@@ -1,86 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1637832576129" clover="3.2.0">
-  <project timestamp="1637832576130" name="All files">
-    <metrics statements="57" coveredstatements="52" conditionals="15" coveredconditionals="12" methods="14" coveredmethods="11" elements="86" coveredelements="75" complexity="0" loc="57" ncloc="57" packages="2" files="6" classes="6"/>
+<coverage generated="1637923661517" clover="3.2.0">
+  <project timestamp="1637923661517" name="All files">
+    <metrics statements="121" coveredstatements="119" conditionals="53" coveredconditionals="46" methods="30" coveredmethods="28" elements="204" coveredelements="193" complexity="0" loc="121" ncloc="121" packages="2" files="7" classes="7"/>
     <package name="src">
-      <metrics statements="55" coveredstatements="50" conditionals="15" coveredconditionals="12" methods="14" coveredmethods="11"/>
+      <metrics statements="111" coveredstatements="109" conditionals="53" coveredconditionals="46" methods="30" coveredmethods="28"/>
       <file name="awesome-tree.ts" path="/Users/bytedance/awesome-tree/src/awesome-tree.ts">
-        <metrics statements="35" coveredstatements="31" conditionals="11" coveredconditionals="10" methods="7" coveredmethods="5"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="27" count="7" type="stmt"/>
-        <line num="28" count="7" type="stmt"/>
-        <line num="29" count="11" type="stmt"/>
-        <line num="30" count="11" type="stmt"/>
-        <line num="31" count="11" type="stmt"/>
-        <line num="32" count="11" type="stmt"/>
-        <line num="33" count="11" type="stmt"/>
-        <line num="34" count="11" type="stmt"/>
-        <line num="36" count="11" type="stmt"/>
-        <line num="38" count="11" type="cond" truecount="2" falsecount="0"/>
-        <line num="39" count="5" type="stmt"/>
-        <line num="49" count="6" type="stmt"/>
-        <line num="52" count="11" type="stmt"/>
-        <line num="53" count="11" type="stmt"/>
-        <line num="55" count="11" type="cond" truecount="1" falsecount="0"/>
-        <line num="56" count="6" type="stmt"/>
-        <line num="58" count="11" type="stmt"/>
-        <line num="61" count="7" type="stmt"/>
-        <line num="64" count="2" type="stmt"/>
-        <line num="72" count="2" type="stmt"/>
-        <line num="74" count="2" type="stmt"/>
-        <line num="75" count="2" type="stmt"/>
-        <line num="77" count="2" type="stmt"/>
-        <line num="79" count="10" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="86" count="2" type="stmt"/>
-        <line num="95" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="99" count="0" type="stmt"/>
-        <line num="102" count="2" type="stmt"/>
-        <line num="108" count="1" type="stmt"/>
-        <line num="112" count="2" type="stmt"/>
+        <metrics statements="44" coveredstatements="43" conditionals="16" coveredconditionals="15" methods="13" coveredmethods="12"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="32" count="60" type="stmt"/>
+        <line num="33" count="60" type="stmt"/>
+        <line num="35" count="85" type="stmt"/>
+        <line num="36" count="85" type="stmt"/>
+        <line num="37" count="85" type="stmt"/>
+        <line num="38" count="85" type="stmt"/>
+        <line num="39" count="85" type="stmt"/>
+        <line num="40" count="85" type="stmt"/>
+        <line num="41" count="85" type="stmt"/>
+        <line num="42" count="85" type="stmt"/>
+        <line num="45" count="85" type="cond" truecount="1" falsecount="0"/>
+        <line num="46" count="81" type="stmt"/>
+        <line num="47" count="81" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="47" type="stmt"/>
+        <line num="60" count="85" type="stmt"/>
+        <line num="61" count="85" type="stmt"/>
+        <line num="63" count="85" type="cond" truecount="1" falsecount="0"/>
+        <line num="64" count="47" type="stmt"/>
+        <line num="66" count="85" type="stmt"/>
+        <line num="69" count="60" type="stmt"/>
+        <line num="72" count="4" type="stmt"/>
+        <line num="83" count="13" type="stmt"/>
+        <line num="85" count="13" type="stmt"/>
+        <line num="86" count="13" type="stmt"/>
+        <line num="88" count="13" type="stmt"/>
+        <line num="90" count="183" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="96" count="51" type="stmt"/>
+        <line num="99" count="144" type="stmt"/>
+        <line num="102" count="8" type="stmt"/>
+        <line num="109" count="5" type="stmt"/>
+        <line num="113" count="13" type="stmt"/>
+        <line num="122" count="28" type="cond" truecount="0" falsecount="1"/>
+        <line num="124" count="28" type="stmt"/>
+        <line num="126" count="28" type="stmt"/>
+        <line num="129" count="13" type="stmt"/>
+        <line num="135" count="3" type="stmt"/>
+        <line num="142" count="5" type="stmt"/>
+        <line num="145" count="3" type="stmt"/>
+        <line num="149" count="13" type="stmt"/>
+      </file>
+      <file name="flatten.ts" path="/Users/bytedance/awesome-tree/src/flatten.ts">
+        <metrics statements="32" coveredstatements="32" conditionals="28" coveredconditionals="26" methods="7" coveredmethods="7"/>
+        <line num="4" count="41" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="14" count="19" type="cond" truecount="3" falsecount="0"/>
+        <line num="15" count="19" type="stmt"/>
+        <line num="16" count="34" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="32" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="14" type="stmt"/>
+        <line num="22" count="32" type="cond" truecount="3" falsecount="0"/>
+        <line num="23" count="31" type="stmt"/>
+        <line num="27" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="46" count="11" type="cond" truecount="3" falsecount="0"/>
+        <line num="47" count="11" type="stmt"/>
+        <line num="48" count="21" type="cond" truecount="0" falsecount="1"/>
+        <line num="51" count="21" type="cond" truecount="3" falsecount="0"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="cond" truecount="3" falsecount="0"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="59" count="19" type="cond" truecount="3" falsecount="0"/>
+        <line num="60" count="6" type="stmt"/>
+        <line num="63" count="19" type="stmt"/>
+        <line num="68" count="3" type="stmt"/>
+        <line num="69" count="3" type="stmt"/>
       </file>
       <file name="index.ts" path="/Users/bytedance/awesome-tree/src/index.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="4" type="stmt"/>
+        <line num="1" count="17" type="stmt"/>
       </file>
-      <file name="internal.ts" path="/Users/bytedance/awesome-tree/src/internal.ts">
-        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+      <file name="internal-utils.ts" path="/Users/bytedance/awesome-tree/src/internal-utils.ts">
+        <metrics statements="15" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="5"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="80" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="10" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="175" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="49" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="135" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
       </file>
-      <file name="logger.ts" path="/Users/bytedance/awesome-tree/src/logger.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="6" type="stmt"/>
+      <file name="nested.ts" path="/Users/bytedance/awesome-tree/src/nested.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="10" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
       </file>
       <file name="path.ts" path="/Users/bytedance/awesome-tree/src/path.ts">
         <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="4" type="stmt"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="30" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="16" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="30" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="32" count="12" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
       </file>
     </package>
     <package name="test">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="tree-data.ts" path="/Users/bytedance/awesome-tree/test/tree-data.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="70" count="4" type="stmt"/>
+        <line num="105" count="4" type="stmt"/>
+        <line num="126" count="4" type="stmt"/>
+        <line num="148" count="4" type="stmt"/>
+        <line num="169" count="4" type="stmt"/>
+        <line num="213" count="4" type="stmt"/>
+        <line num="255" count="4" type="stmt"/>
+        <line num="277" count="4" type="stmt"/>
       </file>
     </package>
   </project>

@@ -5,7 +5,6 @@ describe('path', () => {
   const awesomeTree = createAwesomeTree(pathTreeData)
 
   it('get right path', () => {
-    debugger
     expect(awesomeTree.getPath('1-1-1-1').keyPath).toEqual([
       '1',
       '1-1',
