@@ -20,6 +20,7 @@ export interface SpectreNode {
   [key: string]: unknown
 }
 
+
 export interface AwsTreeNode<R = RawNode, G = R, S = R> {
   key: Key
   rawNode: R | G | S
@@ -35,12 +36,16 @@ export interface AwsTreeNode<R = RawNode, G = R, S = R> {
   isGroup: boolean
   isSpectre: boolean
   nested: (
-    this: AwsTreeNode<R, G, S>,
     node: AwsTreeNode<R, G, S>,
     isDirect?: boolean
   ) => boolean
-  flatten: (this: Array<AwsTreeNode<R, G, S>>) => Array<AwsTreeNode<R, G, S>>
+  getPrev: (options?: GetPrevTargetOptions) => MaybeAwsTreeNode<R>
+  getNext: (options?: GetNextTargetOptions) => MaybeAwsTreeNode<R>
+  getParent: () => MaybeAwsTreeNode<R>
+  getChild: () => MaybeAwsTreeNode<R>
 }
+
+export type MaybeAwsTreeNode<R> = AwsTreeNode<R> | null
 
 export interface AwsTreeNodeOperators<R = RawNode , G = R , S = R> {
   getChildren?: (node: R | G | S) => Array<R | G |S> | unknown
@@ -55,6 +60,22 @@ export interface GetPathOptions {
   includeSelf?: boolean
 }
 
+export interface BaseGetTargetOptions {
+  loop?: boolean
+  skipDisabled?: boolean
+}
+export interface GetPrevNextTargetOptions {
+  dir: 'prev' | 'next'
+  loop?: boolean
+  skipDisabled?: boolean
+}
+export interface GetPrevTargetOptions extends BaseGetTargetOptions {
+  dir: 'prev'
+}
+export interface GetNextTargetOptions extends BaseGetTargetOptions {
+  dir: 'next'
+}
+
 export type GetChildren<R, G, S> = (node: R | G | S) => Array<R | G | S> | unknown
 
 export type AwsTreeNodeMap<R, G, S> = Map<Key, AwsTreeNode<R, G, S>>
@@ -63,15 +84,20 @@ export type LeveledAwsTreeNodeMap<R, G, S> = Map<
   Array<AwsTreeNode<R, G, S>>
 >
 
-export type KeyToAwsTreeNode<R, G, S> = <T extends Key>(
+export type KeyToAwsTreeNode<R, G> = <T extends Key>(
   key: T
-) => T extends null | undefined ? null : AwsTreeNode<R, G, S> | null
+) => T extends null | undefined ? null : AwsTreeNode<R, G> | null
+
+export type KeyToGroupNode<R,G> = <T extends Key>(
+  key: T
+) => T extends null | undefined ? null : AwsTreeNode<R, G> | null
 
 export interface AwesomeTree<R, G, S> {
   awsTreeNodes: Array<AwsTreeNode<R, G, S>>
   awsTreeNodeMap: AwsTreeNodeMap<R, G, S>
   leveledAwsTreeNodeMap: LeveledAwsTreeNodeMap<R, G, S>
-  getNode: KeyToAwsTreeNode<R, G, S>
+  getNode: KeyToAwsTreeNode<R, R>
+  getGroupNode: KeyToGroupNode<G, G>
   getPath: (
     key: Key | null | undefined,
     options?: GetPathOptions
@@ -85,6 +111,12 @@ export interface AwesomeTree<R, G, S> {
   flatten: (nodes: Array<AwsTreeNode<R, G, S>>, skipGroup?: boolean) => Array<AwsTreeNode<R, G, S>>
   
   flattenExpandedKeys: (expandedKeys: Key[], skipGroup?: boolean) => Array<AwsTreeNode<R, G, S>>
+  getFirstAvailableNode: () => AwsTreeNode<R>
+  
+  getPrev: (key: Key | null | undefined, options?: GetPrevTargetOptions) => AwsTreeNode<R> | null
+  getNext: (key: Key | null | undefined, options?: GetNextTargetOptions) => AwsTreeNode<R> | null
+  getParent: (key: Key | null | undefined) => MaybeAwsTreeNode<R>
+  getChild: (key: Key | null | undefined) => MaybeAwsTreeNode<R>
 }
 
 export interface AwsTreePath<R, G, S> {

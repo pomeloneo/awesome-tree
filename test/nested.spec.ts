@@ -1,5 +1,5 @@
 import { createAwesomeTree } from '../src'
-import { treeData } from './tree-data'
+import { treeData } from './data-test/tree-data'
 
 describe('path', () => {
   const awesomeTree = createAwesomeTree(treeData)

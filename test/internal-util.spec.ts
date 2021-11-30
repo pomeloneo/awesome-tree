@@ -1,5 +1,5 @@
 import { createAwesomeTree } from '../src'
-import { customChildren, customKey, groupTree, spectreTree, leafTreeData, customLeafTreeData } from './tree-data'
+import { customChildren, customKey, groupTree, spectreTree, leafTreeData, customLeafTreeData } from './data-test/tree-data'
 
 describe('internal util', () => {
   const awesomeTree = createAwesomeTree(customChildren, {
@@ -38,6 +38,7 @@ describe('internal util', () => {
     }
   })
 
+
   it('getChildren work', () => {
     expect(awesomeTree.getPath('1-1-1-1').keyPath).toEqual([
       '1',
@@ -56,6 +57,16 @@ describe('internal util', () => {
     ])
   })
 
+
+  it('null & undefined key', () => {
+    expect(awesomeTree.getNode(null)).toEqual(null)
+    expect(awesomeTree.getNode(undefined)).toEqual(null)
+  })
+
+  it('not existed key', () => {
+    expect(awesomeTree.getNode('do-i')).toEqual(null)
+  })
+
   it('isGroup work', () => {
     expect(awesomeTree2.getNode('group-key1').isGroup).toEqual(true)
     expect(awesomeTree2.getNode('1-1').isGroup).toEqual(false)
@@ -67,7 +78,7 @@ describe('internal util', () => {
   })
   
   it('isSpectre work', () => {
-    debugger
+
     console.log(awesomeTree4.getNode('1-1'));
     
     expect(awesomeTree4.getNode('spectre-key1').isSpectre).toEqual(true)

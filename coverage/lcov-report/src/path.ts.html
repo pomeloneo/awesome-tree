@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.3% </span>
+                <span class="strong">7.69% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/13</span>
+                <span class='fraction'>1/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">9.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>1/11</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -100,32 +100,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
   AwesomeTree,
@@ -135,32 +135,32 @@
   Key
 } from './interface'
 &nbsp;
-export function getPath&lt;R, G, S&gt;(
+export function <span class="fstat-no" title="function not covered" >getPath&lt;</span>R, G, S&gt;(
   key: Key | null | undefined,
-  { includeSelf = true }: GetPathOptions,
+  { includeSelf = <span class="branch-0 cbranch-no" title="branch not covered" >true </span>}: GetPathOptions,
   awesomeTree: AwesomeTree&lt;R, G, S&gt;
 ): AwsTreePath&lt;R, G, S&gt; {
-  const awsTreeNodeMap = awesomeTree.awsTreeNodeMap
+  const awsTreeNodeMap = <span class="cstat-no" title="statement not covered" >awesomeTree.awsTreeNodeMap</span>
 &nbsp;
-  let awsTreeNode = key == null ? <span class="branch-0 cbranch-no" title="branch not covered" >null </span>: awsTreeNodeMap.get(key)
+  let awsTreeNode = <span class="cstat-no" title="statement not covered" >key == null ? null : awsTreeNodeMap.get(key)</span>
 &nbsp;
-  const awsTreePath: AwsTreePath&lt;R, G, S&gt; = {
+  const awsTreePath: AwsTreePath&lt;R, G, S&gt; = <span class="cstat-no" title="statement not covered" >{</span>
     keyPath: [],
     awsTreeNodePath: [],
     awsTreeNode: awsTreeNode as AwsTreeNode&lt;R, G, S&gt; | null
   }
 &nbsp;
-  while (awsTreeNode) {
-    awsTreePath.awsTreeNodePath.push(awsTreeNode)
-    awsTreeNode = awsTreeNode.parent
+<span class="cstat-no" title="statement not covered" >  while (awsTreeNode) {</span>
+<span class="cstat-no" title="statement not covered" >    awsTreePath.awsTreeNodePath.push(awsTreeNode)</span>
+<span class="cstat-no" title="statement not covered" >    awsTreeNode = awsTreeNode.parent</span>
   }
-  awsTreePath.awsTreeNodePath.reverse()
+<span class="cstat-no" title="statement not covered" >  awsTreePath.awsTreeNodePath.reverse()</span>
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!includeSelf) <span class="cstat-no" title="statement not covered" >awsTreePath.awsTreeNodePath.pop()</span>
+<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (!includeSelf) <span class="cstat-no" title="statement not covered" >awsTreePath.awsTreeNodePath.pop()</span></span>
 &nbsp;
-  awsTreePath.keyPath = awsTreePath.awsTreeNodePath.map((n) =&gt; n.key)
+<span class="cstat-no" title="statement not covered" >  awsTreePath.keyPath = awsTreePath.awsTreeNodePath.map(<span class="fstat-no" title="function not covered" >(n</span>) =&gt; <span class="cstat-no" title="statement not covered" >n.key)</span></span>
 &nbsp;
-  return awsTreePath
+<span class="cstat-no" title="statement not covered" >  return awsTreePath</span>
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -169,7 +169,7 @@ export function getPath&lt;R, G, S&gt;(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Nov 26 2021 18:47:41 GMT+0800 (China Standard Time)
+                at Tue Nov 30 2021 18:56:35 GMT+0800 (China Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

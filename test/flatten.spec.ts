@@ -1,5 +1,5 @@
 import { createAwesomeTree } from '../src'
-import { treeData, groupTreeData, spectreTreeData } from './tree-data'
+import { treeData, groupTreeData, spectreTreeData } from './data-test/tree-data'
 
 describe('flatten', () => {
   const awesomeTree = createAwesomeTree(treeData)
